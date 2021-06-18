@@ -48,7 +48,7 @@ body{
   content :"" ;
   position: absolute;
   width: 100%;
-  height: 12px;
+  height: 1em;
   /* background:white ; */
   top: 47%;
   border-radius: 32%;
@@ -78,6 +78,6 @@ body{
   height: 90%;
   border-radius: 50%;
   background-color:var(--bg-clr) ;
-  box-shadow:   0 0 12px 6px var(--o-clr);
+  box-shadow: 0 0 12px 6px var(--o-clr);
 
 }
