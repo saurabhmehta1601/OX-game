@@ -18,10 +18,18 @@ function App() {
       alert("Spot reserved")
     }
     else if(activePlayer==1 ){
+      if(!gridItem){
+        alert("Spot reserved")
+        return 
+      }
       const newCells = [...player1Cells,gridItem]
       setPlayer1Cells(newCells)
       setActivePlayer(2)
     }else if(activePlayer==2){
+      if(!gridItem){
+        alert("Spot reserved")
+        return 
+      }
       const newCells = [...player2Cells,gridItem]
       setPlayer2Cells(newCells)
       setActivePlayer(1)
