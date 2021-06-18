@@ -37,16 +37,22 @@ function App() {
   }
 
   useEffect(() =>{
+
     const is1Winner = evaluateWinner(player1Cells)
     if (is1Winner) {
        alert("Player 1 won") 
+       window.location.reload()
       }
+
     const is2Winner = evaluateWinner(player2Cells)
     if (is2Winner) {
        alert("Player 2 won") 
+       window.location.reload()
       }
-      if(player1Cells.length + player2Cells.length == 9){
-        alert("Match is draw")
+      
+    if(player1Cells.length + player2Cells.length == 9){
+      alert("Match is draw")
+      window.location.reload()
       }
 
   },[player1Cells,player2Cells])
