@@ -15,19 +15,19 @@ function App() {
     const gridItem = e.target.dataset.id
 
     if(player2Cells.includes(gridItem) || player1Cells.includes(gridItem) ){
-      alert("Spot reserved")
+      alert("Spot already marked")
     }
-    else if(activePlayer==1 ){
+    else if(activePlayer === 1 ){
       if(!gridItem){
-        alert("Spot reserved")
+        alert("Spot already marked")
         return 
       }
       const newCells = [...player1Cells,gridItem]
       setPlayer1Cells(newCells)
       setActivePlayer(2)
-    }else if(activePlayer==2){
+    }else if(activePlayer === 2){
       if(!gridItem){
-        alert("Spot reserved")
+        alert("Spot already marked")
         return 
       }
       const newCells = [...player2Cells,gridItem]
@@ -49,8 +49,8 @@ function App() {
        alert("Player 2 won") 
        window.location.reload()
       }
-      
-    if(player1Cells.length + player2Cells.length == 9){
+
+    if(player1Cells.length + player2Cells.length === 9){
       alert("Match is draw")
       window.location.reload()
       }
@@ -62,9 +62,9 @@ function App() {
      
       {board.map((item) =>{
 
-        if(player1Cells.find(i => i==item) ){
+        if(player1Cells.find(i => parseInt(i) === item) ){
           return <div key={item} data-id={item} onClick={handleClick}><X /></div>
-        }else if(player2Cells.find( i => i==item )){
+        }else if(player2Cells.find( i => parseInt(i) === item )){
           return <div key={item} data-id={item} onClick={handleClick}><O /></div>
         }else{
           return <div key={item} data-id={item} onClick={handleClick}></div>
