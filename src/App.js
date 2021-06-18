@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect ,useState } from 'react';
 import X from "./components/x"
 import O from "./components/o"
+import {evaluateWinner} from "./lib/utils"
 
 function App() {
   const board = Array(9).fill(0).map((item ,idx) => idx + 1)
@@ -9,7 +10,6 @@ function App() {
   const [activePlayer,setActivePlayer] = useState(1)
   const [player1Cells,setPlayer1Cells] = useState([])
   const [player2Cells,setPlayer2Cells] = useState([])
-  
 
   const handleClick = (e) =>{
     const gridItem = e.target.dataset.id
@@ -36,6 +36,21 @@ function App() {
     }
   }
 
+  useEffect(() =>{
+    const is1Winner = evaluateWinner(player1Cells)
+    if (is1Winner) {
+       alert("Player 1 won") 
+      }
+    const is2Winner = evaluateWinner(player2Cells)
+    if (is2Winner) {
+       alert("Player 2 won") 
+      }
+      if(player1Cells.length + player2Cells.length == 9){
+        alert("Match is draw")
+      }
+
+  },[player1Cells,player2Cells])
+
   return (
     <div className="board">
      
@@ -49,12 +64,6 @@ function App() {
           return <div key={item} data-id={item} onClick={handleClick}></div>
         } 
       })}
-
-
-      {/* {board.map((item,idx) => {
-        if(item % 2 ===0) return <div><X /></div>
-        else return <div><O /></div>
-      })} */}
 
     </div>
   );
